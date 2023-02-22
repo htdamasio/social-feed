@@ -21,16 +21,14 @@ interface PostContent {
 interface IComment {
   author: string,
   publishedAt: Date,
-  content: string,
-  likes: 0
+  content: string
 }
 
 export interface PostType {
   id: number,
   author: Author,
   content: PostContent[],
-  publishedAt: Date,
-  comments: IComment[]
+  publishedAt: Date
 }
 
 interface PostProps {
@@ -38,7 +36,7 @@ interface PostProps {
 }
 
 export function Post({ post }: PostProps) {
-  const [postComments, setPostComments] = useState(post.comments ?? []);
+  const [postComments, setPostComments] = useState<IComment[]>([]);
   const [newCommnetText, setNewCommnetText] = useState('');
   
   const publishedDateFormatted = format(post.publishedAt, "LLLL dd 'at' KK:mm aa");
@@ -66,8 +64,7 @@ export function Post({ post }: PostProps) {
     return {
       author: "Henrique Tomé",
       publishedAt: new Date(),
-      content: commentContent,
-      likes: 0
+      content: commentContent
     }
   }
 
@@ -136,14 +133,13 @@ export function Post({ post }: PostProps) {
       </form>
 
       <div className={styles.commentList}>
-        {postComments?.map(comment => {
+        {postComments.map(comment => {
           return (
             <Comment 
               key={comment.content} 
               author={comment.author}
               publishedAt={comment.publishedAt}
               content={comment.content}
-              likes={comment.likes}
               onDeleteComment={deleteComment}
             />
           )

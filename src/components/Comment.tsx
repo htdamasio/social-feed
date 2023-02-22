@@ -6,20 +6,19 @@ import styles from './Comment.module.css'
 interface CommentProps {
   author: string,
   content: string,
-  likes: number, 
   publishedAt: Date,
   onDeleteComment: (comment: string) => void;
 }
 
-export function Comment({author, content, likes = 0, onDeleteComment}: CommentProps) {
-  const [applauses, setApplauses] = useState(likes);
+export function Comment({author, content, onDeleteComment}: CommentProps) {
+  const [likes, setLikes] = useState(0);
   
   function handleDeleteComment() {
     onDeleteComment(content)
   }
   
   function handleApplauseComment() {
-    setApplauses((state) => {
+    setLikes((state) => {
       return state + 1;
     });  
   }
@@ -49,7 +48,7 @@ export function Comment({author, content, likes = 0, onDeleteComment}: CommentPr
         <footer>
           <button onClick={handleApplauseComment}>
             <ThumbsUp size={20}/>
-            Applause <span>{applauses}</span>
+            Applause <span>{likes}</span>
           </button>
         </footer>
       </div>
