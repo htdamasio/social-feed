@@ -59,8 +59,7 @@ const posts: PostType[] = [
         ]
       }
     ],
-    publishedAt: new Date('2023-02-21 11:30:00'),
-    comments: []
+    publishedAt: new Date('2023-02-21 11:30:00')
   },
   {
     id: 2,
@@ -114,8 +113,7 @@ const posts: PostType[] = [
         ]
       }
     ],
-    publishedAt: new Date('2023-02-15 14:30:00'),
-    comments: []
+    publishedAt: new Date('2023-02-15 14:30:00')
   }
 ]
 
